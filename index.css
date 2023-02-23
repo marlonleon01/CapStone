@@ -58,6 +58,10 @@ main {
     margin: 0;
 }
 
+.time {
+    font-size: 5rem;
+}
+
 .weather {
     display: flex;
     flex-direction: column;
