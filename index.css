@@ -60,6 +60,7 @@ main {
 
 .crypto-currency-prices > p {
     margin: 0;
+    font-size: 1.2rem
 }
 
 .time {
