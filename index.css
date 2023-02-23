@@ -4,6 +4,7 @@ html {
     border: 0;
     outline: 0;
     box-sizing: border-box;
+    height: 100%;
   }
   
 *, *:before, *:after {
@@ -18,4 +19,25 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px 2px #474747;
+    height: 100%;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.top-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.time {
+    text-align: center;
 }
