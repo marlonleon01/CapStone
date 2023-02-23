@@ -47,8 +47,13 @@ main {
     display: flex;
     align-items: center;
     gap: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .crypto-currency > span {
     font-size: 1.5rem;
+}
+
+.crypto-currency-prices > p {
+    margin: 0;
 }
