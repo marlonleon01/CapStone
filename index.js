@@ -1,5 +1,7 @@
 const authorOfImg = document.getElementById("author-of-img")
 const coinGeckoBaseUrl = "https://api.coingecko.com/api/v3"
+const cryptoCurrencyName = document.getElementById("crypto-currency")
+const cryptoPriceInfo = document.getElementById("crypto-currency-prices")
 
 fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
     .then(res => res.json())
@@ -13,6 +15,21 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
     })
     
 fetch(`${coinGeckoBaseUrl}/coins/bitcoin`)
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
+    .then(res => {
+        if (!res.ok) {
+            throw Error("Something went wrong")
+        }
+        return res.json()
+    })
+    .then(data => {
+        console.log(data)
+        cryptoCurrencyName.innerHTML = `
+                <img src="${data.image.small}"> <span>${data.name}</span>
+            `
+        cryptoPriceInfo.innerHTML = `
+                <p>🎯: $${data.market_data.current_price.usd}</p>
+                <p>👆: $${data.market_data.high_24h.usd}</p>
+                <p>👇: $${data.market_data.low_24h.usd}</p>
+            `
+    })
+    .catch(err => alert(err))
