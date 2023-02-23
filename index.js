@@ -50,6 +50,7 @@ setInterval(updateTime, 1000)
 
 function getLocationAndWeather() {
     const weatherBaseUrl = "https://apis.scrimba.com/openweathermap/data/2.5/weather"
+    const weather = document.getElementById("weather")
 
     navigator.geolocation.getCurrentPosition(position => {
         const longitude = position.coords.longitude
@@ -62,7 +63,16 @@ function getLocationAndWeather() {
                 }
                 return res.json()
             })
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data)
+                const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+                weather.innerHTML = `
+                        <img src="${iconUrl}" />
+                        <h2>${Math.round(data.main.temp)}º</h2>
+                        <p>${data.name}</p>
+                    `
+            })
+            .catch(err => alert(err))
     })
 }
 getLocationAndWeather()
