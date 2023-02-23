@@ -1,7 +1,5 @@
 const authorOfImg = document.getElementById("author-of-img")
 const coinGeckoBaseUrl = "https://api.coingecko.com/api/v3"
-const cryptoCurrencyName = document.getElementById("crypto-currency")
-const cryptoPriceInfo = document.getElementById("crypto-currency-prices")
 
 fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
     .then(res => res.json())
@@ -22,6 +20,9 @@ fetch(`${coinGeckoBaseUrl}/coins/bitcoin`)
         return res.json()
     })
     .then(data => {
+        const cryptoCurrencyName = document.getElementById("crypto-currency")
+        const cryptoPriceInfo = document.getElementById("crypto-currency-prices")
+
         cryptoCurrencyName.innerHTML = `
                 <img src="${data.image.small}"> <span>${data.name}</span>
             `
@@ -32,3 +33,11 @@ fetch(`${coinGeckoBaseUrl}/coins/bitcoin`)
             `
     })
     .catch(err => alert(err))
+
+function updateTime() {
+    const date = new Date()
+    const time = document.getElementById("time")
+    time.innerHTML = date.toLocaleTimeString("en-us", {timeStyle: "short"})
+}
+
+setInterval(updateTime, 1000)
