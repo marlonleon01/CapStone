@@ -22,7 +22,6 @@ fetch(`${coinGeckoBaseUrl}/coins/bitcoin`)
         return res.json()
     })
     .then(data => {
-        console.log(data)
         cryptoCurrencyName.innerHTML = `
                 <img src="${data.image.small}"> <span>${data.name}</span>
             `
