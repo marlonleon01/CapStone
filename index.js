@@ -47,3 +47,22 @@ function updateTime() {
     time.textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"})
 }
 setInterval(updateTime, 1000)
+
+function getLocationAndWeather() {
+    const weatherBaseUrl = "https://apis.scrimba.com/openweathermap/data/2.5/weather"
+
+    navigator.geolocation.getCurrentPosition(position => {
+        const longitude = position.coords.longitude
+        const latitude = position.coords.latitude
+        
+        fetch(`${weatherBaseUrl}?lat=${latitude}&lon=${longitude}&units=imperial`)
+            .then(res => {
+                if (!res.ok) {
+                    throw Error("Weather data not available")
+                }
+                return res.json()
+            })
+            .then(data => console.log(data))
+    })
+}
+getLocationAndWeather()
