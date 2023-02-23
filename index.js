@@ -67,8 +67,10 @@ function getLocationAndWeather() {
                 console.log(data)
                 const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
                 weather.innerHTML = `
-                        <img src="${iconUrl}" />
-                        <h2>${Math.round(data.main.temp)}º</h2>
+                        <div>
+                            <img src="${iconUrl}" />
+                            <h2>${Math.round(data.main.temp)}º</h2>
+                        </div>
                         <p>${data.name}</p>
                     `
             })
